@@ -1,0 +1,60 @@
+필름 롤, 사진 외에 저장해야 될 것
+프리셋만 7개 필요함
+camera(카메라 이름)
+focalLength(초점 거리)
+
+film | emulsion(필름)
+format(필름 크기)
+boxISO(필름 ISO) = ratedISO(카메라에 설정한 ISO)
+
+Aperture(조리개)
+shutterSpeed(셔터 속도)
+
+
+
+
+
+id
+uid
+status(activity, progress 등)
+mode(new roll, new set of holders \ 필름, 대형판형 차이인듯?)
+name
+comment
+thumbnail
+timestamp
+cameraName
+defaultLensName
+defaultFocalLength
+emulsionName
+formatName
+boxIsoSpeed
+ratedIsoSpeed
+defaultShutterSpeed
+defaultAperture
+
+
+filmRollId
+frameIndex
+lensName
+focalLength
+emulsionName
+boxIsoSpeed
+ratedIsoSpeed
+aperture
+shutterSpeed
+latitude
+longitude
+locality
+localTime
+comment
+thumbnail
+
+
+id
+entName
+rKey
+sKey
+rMatch
+sMatch
+score
+relevance

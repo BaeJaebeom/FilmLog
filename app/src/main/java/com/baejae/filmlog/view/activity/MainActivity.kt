@@ -1,7 +1,8 @@
-package com.baejae.filmlog
+package com.baejae.filmlog.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.baejae.filmlog.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
