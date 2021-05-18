@@ -12,8 +12,80 @@ shutterSpeed(셔터 속도)
 
 
 
+-camera
+camera_id : Long
+value : String
+
+-focal_length
+focal_length_id : Long
+value : Int
+
+-film
+film_id : Long
+value : String
+
+-format
+format_id : Long
+value : String
+
+-iso
+iso_id : Long
+value : Int
+
+-aperture
+aperture_id : Long
+value : Int
+
+-shutter_speed
+shutter_speed_id : Long
+value : String
+
+-status
+status_id : Long
+value : String
+
+-film_roll
+film_roll_id : Long
+status : String
+name : String
+comment : String
+create_date : TimeStamp
+camera : String
+film : String
+format : String
+default_lens : String
+default_focal_length
+default_box_iso : Int
+default_rated_iso : Int
+default_shutter_speed : String
+default_aperture : Int
+
+-picture
+picture_id : Long
+film_roll_id : Long
+comment : String
+create_date : TimeStamp
+lens : String
+focal_length : Int
+box_iso : Int
+rated_iso : Int
+shutter_speed : String
+aperture : float
+latitude : float
+longitude : Int
+locality : String
 
 
+
+
+
+
+
+
+
+
+
+-film_roll
 id
 uid
 status(activity, progress 등)
@@ -32,7 +104,7 @@ ratedIsoSpeed
 defaultShutterSpeed
 defaultAperture
 
-
+-picture
 filmRollId
 frameIndex
 lensName
@@ -48,7 +120,6 @@ locality
 localTime
 comment
 thumbnail
-
 
 id
 entName
