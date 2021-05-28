@@ -1,3 +1,5 @@
+네이밍 룰 : https://launchbylunch.com/posts/2014/Feb/16/sql-naming-conventions/
+
 필름 롤, 사진 외에 저장해야 될 것
 프리셋만 7개 필요함
 camera(카메라 이름)
@@ -54,7 +56,7 @@ camera : String
 film : String
 format : String
 default_lens : String
-default_focal_length
+default_focal_length : String
 default_box_iso : Int
 default_rated_iso : Int
 default_shutter_speed : String
@@ -70,9 +72,9 @@ focal_length : Int
 box_iso : Int
 rated_iso : Int
 shutter_speed : String
-aperture : float
+aperture : Int
 latitude : float
-longitude : Int
+longitude : float
 locality : String
 
 
