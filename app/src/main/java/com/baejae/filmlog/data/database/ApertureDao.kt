@@ -1,6 +1,7 @@
 package com.baejae.filmlog.data.database
 
 import androidx.room.*
+import com.baejae.filmlog.data.model.Aperture
 
 @Dao
 interface ApertureDao {

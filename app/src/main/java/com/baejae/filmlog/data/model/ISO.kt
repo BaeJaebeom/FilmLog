@@ -1,15 +1,15 @@
-package com.baejae.filmlog.data.database
+package com.baejae.filmlog.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "status")
-data class Status (
+@Entity(tableName = "iso")
+data class ISO (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Long,
 
     @ColumnInfo(name = "value")
-    var value: String
+    var value: Int
 )

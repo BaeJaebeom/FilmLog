@@ -1,15 +1,14 @@
-package com.baejae.filmlog.data.database
+package com.baejae.filmlog.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Timestamp
 
 @Entity(tableName = "film_roll")
 data class FilmRoll(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Long,
+    var id: Long?,
 
     @ColumnInfo(name = "status")
     var status: String,
@@ -21,7 +20,7 @@ data class FilmRoll(
     var comment: String,
 
     @ColumnInfo(name = "create_date", defaultValue = "CURRENT_TIMESTAMP")
-    var createDate: Timestamp,
+    var createDate: String?,
 
     @ColumnInfo(name = "camera")
     var camera: String,

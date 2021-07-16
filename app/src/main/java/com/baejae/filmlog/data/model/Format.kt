@@ -1,15 +1,15 @@
-package com.baejae.filmlog.data.database
+package com.baejae.filmlog.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "focal_length")
-data class FocalLength (
+@Entity(tableName = "format")
+data class Format (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Long,
 
     @ColumnInfo(name = "value")
-    var value: Int
+    var value: String
 )

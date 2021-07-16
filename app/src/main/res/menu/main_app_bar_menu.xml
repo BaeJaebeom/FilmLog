@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/mainAppBarWorkflowFilter"
+        android:icon="@drawable/ic_filter_list_24"
+        android:title="@string/main_app_bar_filter"
+        android:contentDescription="@string/main_app_bar_filter"
+        app:showAsAction="ifRoom">
+    </item>
+
+    <item android:id="@+id/mainAppBarSort"
+        android:icon="@drawable/ic_sort_24"
+        android:title="@string/main_app_bar_sort"
+        android:contentDescription="@string/main_app_bar_sort"
+        app:showAsAction="ifRoom">
+        <menu>
+            <group android:id="@+id/mainAppBarSortGroup"
+                android:checkableBehavior="single">
+                <item android:id="@+id/mainAppBarSortGroupOldest"
+                    android:title="@string/main_app_bar_sort_group_oldest"
+                    android:checked="true"/>
+                <item android:id="@+id/mainAppBarSortGroupLatest"
+                    android:title="@string/main_app_bar_sort_group_latest"/>
+            </group>
+        </menu>
+    </item>
+
+    <item android:id="@+id/mainAppBarMoreOption"
+        android:title="@string/main_app_bar_more_option"
+        app:showAsAction="never">
+
+        <item android:id="@+id/mainAppBarMoreOptionBackup"
+            android:title="@string/main_app_bar_more_option_backup">
+            <menu>
+                <item android:id="@+id/mainAppBarMoreOptionCreateBackup"
+                    android:title="@string/main_app_bar_more_option_create_backup"/>
+                <item android:id="@+id/mainAppBarMoreOptionRestoreBackup"
+                    android:title="@string/main_app_bar_more_option_restore_backup"/>
+            </menu>
+        </item>
+
+        <item android:id="@+id/mainAppBarMoreOptionEditPreset"
+            android:title="@string/main_app_bar_more_option_edit_preset">
+            <menu>
+                <item android:id="@+id/mainAppBarMoreOptionEditPresetAperture"
+                    android:title="@string/aperture"/>
+                <item android:id="@+id/mainAppBarMoreOptionEditPresetCamera"
+                    android:title="@string/camera"/>
+                <item android:id="@+id/mainAppBarMoreOptionEditPresetFilm"
+                    android:title="@string/film"/>
+                <item android:id="@+id/mainAppBarMoreOptionEditPresetFocalLength"
+                    android:title="@string/focal_length"/>
+                <item android:id="@+id/mainAppBarMoreOptionEditPresetISO"
+                    android:title="@string/iso"/>
+                <item android:id="@+id/mainAppBarMoreOptionEditPresetShutterSpeed"
+                    android:title="@string/shutter_speed"/>
+                <item android:id="@+id/mainAppBarMoreOptionEditPresetStatus"
+                    android:title="@string/status"/>
+            </menu>
+        </item>
+
+        <item android:id="@+id/mainAppBarMoreOptionSupport"
+            android:title="@string/main_app_bar_more_option_support"/>
+
+<!--        <item android:id="@+id/ccccc"-->
+<!--            android:title="where is">-->
+<!--            <menu>-->
+<!--                <group android:checkableBehavior="single"-->
+<!--                    android:id="@+id/group_delete">-->
+<!--                    <item android:id="@+id/menu_archive"-->
+<!--                        android:title="b"-->
+<!--                        android:checked="true"/>-->
+<!--                    <item android:id="@+id/menu_delete"-->
+<!--                        android:title="c" />-->
+<!--                </group>-->
+<!--            </menu>-->
+<!--        </item>-->
+    </item>
+
+</menu>
