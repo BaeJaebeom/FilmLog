@@ -1,11 +1,11 @@
-package com.baejae.filmlog.data.model
+package com.baejae.filmlog.data.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "shutter_speed")
-data class ShutterSpeed (
+@Entity(tableName = "camera")
+data class Camera (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id: Long,

@@ -1,7 +1,5 @@
 package com.baejae.filmlog.data.database
 
-import com.baejae.filmlog.data.model.ISO
-
 class ISORepository constructor(private val isoDao: ISODao){
 
     fun getAll() : List<ISO> = isoDao.get()

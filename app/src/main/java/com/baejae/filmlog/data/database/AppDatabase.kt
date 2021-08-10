@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.baejae.filmlog.data.model.*
 import com.baejae.filmlog.util.DATABASE_NAME
 
 @Database(entities = [Aperture::class, Camera::class, Film::class, FilmRoll::class,

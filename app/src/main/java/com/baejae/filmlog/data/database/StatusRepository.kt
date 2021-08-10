@@ -1,7 +1,5 @@
 package com.baejae.filmlog.data.database
 
-import com.baejae.filmlog.data.model.Status
-
 class StatusRepository constructor(private val statusDao: StatusDao){
 
     fun getAll() : List<Status> = statusDao.get()

@@ -1,35 +1,51 @@
-package com.baejae.filmlog.view.activity
+package com.baejae.filmlog.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
-import androidx.lifecycle.Observer
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.baejae.filmlog.FilmRollApplication
 import com.baejae.filmlog.R
-import com.baejae.filmlog.data.database.AppDatabase
-import com.baejae.filmlog.data.model.FilmRoll
+import com.baejae.filmlog.data.database.FilmRoll
+import com.baejae.filmlog.data.database.FilmRollRepository
 import com.baejae.filmlog.databinding.ActivityMainBinding
-import com.baejae.filmlog.view.adapter.FilmRollAdapter
-import com.baejae.filmlog.view.viewmodel.FilmRollViewModel
+import com.baejae.filmlog.view.filmroll.FilmRollAdapter
+import com.baejae.filmlog.view.filmroll.FilmRollViewModel
+import com.baejae.filmlog.view.filmroll.FilmRollViewModelFactory
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var viewBinding: ActivityMainBinding
-    private lateinit var filmRollViewModel: FilmRollViewModel
+    private val filmRollViewModel: FilmRollViewModel by viewModels{
+        FilmRollViewModelFactory((application as FilmRollApplication).filmRollRepository)
+    }
+//    private lateinit var filmRollViewModel: FilmRollViewModel
     private lateinit var filmRollAdapter: FilmRollAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //TODO : sharedpreferences 만들기
+
         //뷰바인딩 세팅
         viewBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = viewBinding.root
         setContentView(view)
+
+        //TODO : sharedpreferences 만들기
+
+        //뷰모델 세팅
+//        filmRollViewModel = ViewModelProvider(this
+//        ).get(FilmRollViewModel((application as FilmRollApplication).filmRollRepository)::class.java)
+
+
+        filmRollViewModel.getFilmRollList()
+            .observe(this, {
+                it?.let { filmRollAdapter.setContacts(it) }
+            })
 
         //FilmRoll 어댑터 세팅
         filmRollAdapter = FilmRollAdapter()
@@ -42,46 +58,42 @@ class MainActivity : AppCompatActivity() {
         viewBinding.mainFilmRollRecyclerView.setHasFixedSize(true)
         viewBinding.mainFilmRollRecyclerView.adapter = filmRollAdapter
 
-        //뷰모델 세팅
-        filmRollViewModel = ViewModelProvider(this,
-        ViewModelProvider.AndroidViewModelFactory.getInstance(application))
-            .get(FilmRollViewModel::class.java)
-        filmRollViewModel.getFilmRollList()
-            .observe(this, {
-                it?.let { filmRollAdapter.setContacts(it) }
-            })
-
         // recyclerView
 
 //        val filmRoll = FilmRoll(
 //            id = null,
-//            status = "a",
-//            name = "b",
-//            comment = "v",
+//            status = "Active",
+//            name = "대구광역시, 22일 7월 2021",
+//            comment = "test",
 //            createDate = SimpleDateFormat("yyyy-MM-dd HH:mm",
 //                Locale.getDefault()).format(Date()),
-//            camera = "d",
-//            film = "e",
-//            format = "f",
-//            defaultLens = "g",
-//            defaultFocalLength = "h",
+//            camera = "Nikon FE",
+//            film = "Kodak Gold 200",
+//            format = "test",
+//            defaultLens = "test",
+//            defaultFocalLength = "test",
 //            defaultBoxISO = 10,
-//            defaultRatedISO = 100,
-//            defaultShutterSpeed = "",
-//            defaultAperture = 1000
+//            defaultRatedISO = 10,
+//            defaultShutterSpeed = "test",
+//            defaultAperture = 10
 //        )
+//        filmRollViewModel.insert(filmRoll)
+//        filmRollViewModel.insert(filmRoll)
+//        filmRollViewModel.insert(filmRoll)
+//        filmRollViewModel.insert(filmRoll)
 //        filmRollViewModel.insert(filmRoll)
 
         //TODO : 애니메이션 적용해서 필름 추가 창 띄우기
-        viewBinding.mainBottomAppBar.setNavigationOnClickListener {
+        viewBinding.mainBottomAppBarFloatingActionButton.setOnClickListener {
 
         }
 
+
         //TODO : 정렬 순서 바꾸는 코드 작성
-        viewBinding.mainBottomAppBar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
+        viewBinding.mainBottomAppBar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
                 R.id.mainAppBarSortGroupOldest, R.id.mainAppBarSortGroupLatest -> {
-                    menuItem.isChecked = !menuItem.isChecked
+                    item.isChecked = !item.isChecked
                     true
                 }
 //                R.id.mainAppBarMoreOptionCreateBackup -> {
@@ -105,10 +117,11 @@ class MainActivity : AppCompatActivity() {
             resources.getString(R.string.status_processed),
             resources.getString(R.string.status_digitised),
             resources.getString(R.string.status_printed),
-            resources.getString(R.string.status_archived))
+            resources.getString(R.string.status_archived)
+        )
         //TODO : sharedpreferences에서 값 가져와서 checkedItems 만들기
         val checkedItems = booleanArrayOf(true, true, true, true, true, false)
-        val mainAppBarFilter : View = findViewById(R.id.mainAppBarWorkflowFilter)
+        val mainAppBarFilter: View = findViewById(R.id.mainAppBarWorkflowFilter)
         mainAppBarFilter.setOnClickListener {
             MaterialAlertDialogBuilder(this@MainActivity)
                 .setTitle(resources.getString(R.string.main_app_bar_workflow_filter_title))
@@ -126,6 +139,54 @@ class MainActivity : AppCompatActivity() {
                 }
                 .show()
         }
+    }
 
+    //TODO : Edit창 만들고 Edit 추가하기
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        val filmRoll: FilmRoll = filmRollAdapter.filmRollList[filmRollAdapter.getPosition()]
+        when (item.itemId) {
+            R.id.filmRollAdapterMenuEdit -> {
+
+            }
+            R.id.filmRollAdapterMenuDelete -> {
+                filmRollViewModel.delete(filmRoll)
+            }
+            R.id.filmRollAdapterMenuWorkflowActive -> {
+                item.isChecked = true
+                filmRollViewModel.updateStatus(
+                    filmRoll,
+                    resources.getString(R.string.status_active)
+                )
+            }
+            R.id.filmRollAdapterMenuWorkflowProcessed -> {
+                item.isChecked = true
+                filmRollViewModel.updateStatus(
+                    filmRoll,
+                    resources.getString(R.string.status_processed)
+                )
+            }
+            R.id.filmRollAdapterMenuWorkflowDigitised -> {
+                item.isChecked = true
+                filmRollViewModel.updateStatus(
+                    filmRoll,
+                    resources.getString(R.string.status_digitised)
+                )
+            }
+            R.id.filmRollAdapterMenuWorkflowPrinted -> {
+                item.isChecked = true
+                filmRollViewModel.updateStatus(
+                    filmRoll,
+                    resources.getString(R.string.status_printed)
+                )
+            }
+            R.id.filmRollAdapterMenuWorkflowArchived -> {
+                item.isChecked = true
+                filmRollViewModel.updateStatus(
+                    filmRoll,
+                    resources.getString(R.string.status_archived)
+                )
+            }
+        }
+        return true
     }
 }

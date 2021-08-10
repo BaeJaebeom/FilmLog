@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/fffff"
-        android:title="we" />
+        android:id="@+id/filmRollAdapterMenuEdit"
+        android:title="@string/film_roll_adapter_menu_edit" />
     <item
-        android:id="@+id/deleteMenu"
-        android:title="ff" />
+        android:id="@+id/filmRollAdapterMenuDelete"
+        android:title="@string/film_roll_adapter_menu_delete" />
     <item
-        android:title="bvcxb">
+        android:id="@+id/filmRollAdapterMenuWorkflow"
+        android:title="@string/film_roll_adapter_menu_workflow">
         <menu>
-            <group android:checkableBehavior="single">
-                <item
-                    android:id="@+id/workflow_activate_menu"
-                    android:title="cc" />
-                <item
-                    android:id="@+id/workflow_finish_menu"
-                    android:title="ee" />
+            <group android:id="@+id/filmRollAdapterMenuWorkflowGroup"
+                android:checkableBehavior="single">
+                <item android:id="@+id/filmRollAdapterMenuWorkflowActive"
+                    android:title="@string/status_active"/>
+                <item android:id="@+id/filmRollAdapterMenuWorkflowProcessed"
+                    android:title="@string/status_processed"/>
+                <item android:id="@+id/filmRollAdapterMenuWorkflowDigitised"
+                    android:title="@string/status_digitised"/>
+                <item android:id="@+id/filmRollAdapterMenuWorkflowPrinted"
+                    android:title="@string/status_printed"/>
+                <item android:id="@+id/filmRollAdapterMenuWorkflowArchived"
+                    android:title="@string/status_archived"/>
             </group>
         </menu>
     </item>

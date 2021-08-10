@@ -1,7 +1,5 @@
 package com.baejae.filmlog.data.database
 
-import com.baejae.filmlog.data.model.Picture
-
 class PictureRepository constructor(private val pictureDao: PictureDao) {
 
     fun getAll(): List<Picture> = pictureDao.get()

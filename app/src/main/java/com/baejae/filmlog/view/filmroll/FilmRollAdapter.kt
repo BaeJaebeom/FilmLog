@@ -1,11 +1,11 @@
-package com.baejae.filmlog.view.adapter
+package com.baejae.filmlog.view.filmroll
 
 import android.content.Context
 import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.baejae.filmlog.R
-import com.baejae.filmlog.data.model.FilmRoll
+import com.baejae.filmlog.data.database.FilmRoll
 
 class FilmRollAdapter : RecyclerView.Adapter<FilmRollAdapter.ViewHolder>() {
     var filmRollList: List<FilmRoll> = listOf()
@@ -14,9 +14,9 @@ class FilmRollAdapter : RecyclerView.Adapter<FilmRollAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
-        val view = LayoutInflater.from(context)
+        val filmRollListView = LayoutInflater.from(context)
             .inflate(R.layout.list_film_roll, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(filmRollListView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -31,10 +31,10 @@ class FilmRollAdapter : RecyclerView.Adapter<FilmRollAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnCreateContextMenuListener {
-        private val textViewTest: TextView = itemView.findViewById<TextView>(R.id.textViewTest)
-//        private val numberTextView: TextView = itemView.findViewById<TextView>(R.id.contactNumber)
-//        private val initialTextView: TextView = itemView.findViewById<TextView>(R.id.contactInitial)
-
+        private val nameTextView: TextView = itemView.findViewById(R.id.listFilmRollNameTextView)
+        private val cameraTextView: TextView = itemView.findViewById(R.id.listFilmRollCameraTextView)
+        private val filmTextView: TextView = itemView.findViewById(R.id.listFilmRollFilmTextView)
+        private val statusTextView: TextView = itemView.findViewById(R.id.listFilmRollStatusTextView)
         init {
             itemView.setOnClickListener {
                 onItemClick?.invoke(filmRollList[absoluteAdapterPosition])
@@ -48,12 +48,30 @@ class FilmRollAdapter : RecyclerView.Adapter<FilmRollAdapter.ViewHolder>() {
             menuInfo: ContextMenu.ContextMenuInfo?
         ) {
             MenuInflater(context).inflate(R.menu.film_roll_adapter_menu, menu)
+            when(filmRollList[absoluteAdapterPosition].status){
+                context.getString(R.string.status_active) ->{
+                    menu?.findItem(R.id.filmRollAdapterMenuWorkflowActive)?.isChecked = true
+                }
+                context.getString(R.string.status_processed) ->{
+                    menu?.findItem(R.id.filmRollAdapterMenuWorkflowProcessed)?.isChecked = true
+                }
+                context.getString(R.string.status_digitised) ->{
+                    menu?.findItem(R.id.filmRollAdapterMenuWorkflowDigitised)?.isChecked = true
+                }
+                context.getString(R.string.status_printed) ->{
+                    menu?.findItem(R.id.filmRollAdapterMenuWorkflowPrinted)?.isChecked = true
+                }
+                context.getString(R.string.status_archived) ->{
+                    menu?.findItem(R.id.filmRollAdapterMenuWorkflowArchived)?.isChecked = true
+                }
+            }
         }
 
         fun bind(filmRoll: FilmRoll) {
-            textViewTest.text = filmRoll.name
-//            numberTextView.text = contact.number
-//            initialTextView.text = contact.initial
+            nameTextView.text = filmRoll.name
+            cameraTextView.text = filmRoll.camera
+            filmTextView.text = filmRoll.film
+            statusTextView.text = filmRoll.status
         }
     }
 

@@ -1,7 +1,5 @@
 package com.baejae.filmlog.data.database
 
-import com.baejae.filmlog.data.model.Camera
-
 class CameraRepository constructor(private val cameraDao: CameraDao){
 
     fun getAll() : List<Camera> = cameraDao.get()

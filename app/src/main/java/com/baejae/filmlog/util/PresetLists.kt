@@ -1,6 +1,6 @@
 package com.baejae.filmlog.util
 
-import com.baejae.filmlog.data.model.*
+import com.baejae.filmlog.data.database.*
 
 val ApertureList: List<Aperture>? = null
 val CameraList: List<Camera>? = null

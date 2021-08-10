@@ -1,7 +1,5 @@
 package com.baejae.filmlog.data.database
 
-import com.baejae.filmlog.data.model.Format
-
 class FormatRepository constructor(private val formatDao: FormatDao){
 
     fun getAll() : List<Format> = formatDao.get()

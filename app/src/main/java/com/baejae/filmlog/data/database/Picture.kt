@@ -1,4 +1,4 @@
-package com.baejae.filmlog.data.model
+package com.baejae.filmlog.data.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

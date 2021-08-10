@@ -35,5 +35,10 @@
 
 
     <!--Film roll adapter menu-->
+    <string name="film_roll_adapter_menu_edit">Edit</string>
+    <string name="film_roll_adapter_menu_delete">Delete</string>
+    <string name="film_roll_adapter_menu_workflow">Workflow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

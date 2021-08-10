@@ -7,7 +7,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.activity.MainActivity">
+        tools:context=".view.MainActivity">
 
         <!-- Note: A RecyclerView can also be used -->
 <!--        <androidx.core.widget.NestedScrollView-->
@@ -37,6 +37,7 @@
             app:menu="@menu/main_app_bar_menu"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mainBottomAppBarFloatingActionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_add_24"

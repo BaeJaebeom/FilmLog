@@ -1,7 +1,5 @@
 package com.baejae.filmlog.data.database
 
-import com.baejae.filmlog.data.model.Film
-
 class FilmRepository constructor(private val filmDao: FilmDao){
 
     fun getAll() : List<Film> = filmDao.get()

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools">
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.filmroll.FilmRollFragment">
+
+    <!-- Note: A RecyclerView can also be used -->
+    <!--        <androidx.core.widget.NestedScrollView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:paddingBottom="100dp"-->
+    <!--            android:clipToPadding="false">-->
+
+    <!-- Scrollable content -->
+
+    <!--        </androidx.core.widget.NestedScrollView>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mainFilmRollRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        tools:listitem="@layout/list_film_roll" />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/mainBottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        app:hideOnScroll="true"
+        app:menu="@menu/main_app_bar_menu"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/mainBottomAppBarFloatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add_24"
+        app:layout_anchor="@id/mainBottomAppBar"
+        android:contentDescription="@string/main_floating_action_button_new_film_roll" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
